@@ -1,5 +1,7 @@
 name: Test & Deploy AtoaDEX to Sui Testnet
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 jobs:
   deploy:
@@ -20,4 +22,3 @@ jobs:
           sui client faucet || true
           sleep 5
           sui client publish --gas-budget 100000000 --skip-dependency-verification
-          
