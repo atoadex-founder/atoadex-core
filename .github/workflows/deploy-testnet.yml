@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Sui CLI
+      - name: Install Latest Sui Testnet CLI
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG=$(curl -s https://github.com | grep -o '"tag_name": "testnet-[^"]*"' | head -n 1 | cut -d'"' -f4)
-          curl -fsSL "https://github.com{TAG}/sui-${TAG}-ubuntu-x86_64.tgz" -o sui.tgz
+          URL=$(gh release list -R MystenLabs/sui --limit 20 | awk '/testnet/ {print $1; exit}')
+          gh release download "$URL" -R MystenLabs/sui -p '*ubuntu-x86_64.tgz' -O sui.tgz
           tar -xzf sui.tgz
           sudo mv sui /usr/local/bin/
       - name: Run Security Exploit Tests
@@ -23,6 +25,4 @@ jobs:
           sui client new-env --alias testnet --rpc https://sui.io
           sui client switch --env testnet
           sui keytool import "$SUI_KEY" ed25519
-          sui client faucet || true
-          sleep 5
           sui client publish --gas-budget 100000000 --skip-dependency-verification
