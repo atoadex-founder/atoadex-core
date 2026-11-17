@@ -4,8 +4,5 @@ edition = "2024.beta"
 license = "Apache-2.0"
 authors = ["AtoaDEX Labs <founder.atoadex@proton.me>"]
 
-[dependencies]
-Sui = { git = "https://github.com", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
-
 [addresses]
 atoadex_core = "0x0"
