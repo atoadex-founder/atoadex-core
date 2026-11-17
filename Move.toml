@@ -6,3 +6,4 @@ authors = ["AtoaDEX Labs <founder.atoadex@proton.me>"]
 
 [addresses]
 atoadex_core = "0x0"
+atoadex = "0x0"
