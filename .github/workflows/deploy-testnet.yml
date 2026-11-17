@@ -27,5 +27,7 @@ jobs:
           sui keytool import "$SUI_KEY" ed25519 || true
           sui client faucet || true
           sleep 5
-          sui client publish --gas-budget 100000000 --skip-dependency-verification
+          sui client faucet || true
+          sleep 5
+          sui client publish --gas-budget 200000000 --skip-dependency-verification
           
