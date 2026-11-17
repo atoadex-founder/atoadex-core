@@ -6,18 +6,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    container:
+      image: mysten/sui-tools:testnet
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Sui CLI
-        uses: MystenLabs/sui-action@main
-        with:
-          network: testnet
       - name: Run Security Exploit Tests
         run: sui move test
       - name: Publish to Sui Testnet
         env:
           SUI_KEY: ${{ secrets.SUI_TESTNET_KEY }}
         run: |
+          sui client new-env --alias testnet --rpc https://sui.io || true
+          sui client switch --env testnet
           sui keytool import "$SUI_KEY" ed25519
           sui client faucet || true
           sleep 5
