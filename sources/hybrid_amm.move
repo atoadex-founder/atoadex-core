@@ -242,10 +242,11 @@ module atoadex_core::hybrid_amm {
 
     /// Claim matured 24-Hour Whale Queue ticket (Same-Address Return Only)
     public fun claim_queued_whale_withdrawal<X, Y>(
-        pool: &mut LiquidityPool<X, Y>,
-        ticket: &mut QueuedWithdrawalTicket,
-        clock: &Clock,
-        ctx: &mut TxContext
-    ): (Coin<X>, Coin<Y>) {
-        let shares = whale_queue::verify_and_consume_ticket(ticket, clock, ctx);
-        let out_x = (((shares as u128) * (pool.reserve_x.value() as u128))
+   public fun claim_timelocked_whale_withdrawal<X, Y>(
+    pool: &mut LiquidityPool<X, Y>,
+    ticket: WhaleExitTicket,
+    clock: &Clock,
+    ctx: &mut TxContext
+): (Coin<X>, Coin<Y>) {
+    let shares = whale_queue::verify_and_consume_ticket(ticket, clock, ctx)
+
