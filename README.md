@@ -22,9 +22,9 @@ Milestone 3 ($8,000 | Weeks 9-12): Public Testnet stress-testing and Tier-1 Sui 
 
 Our complete AtoaDEX v1.9.8 Canonical Whitepaper is available immediately upon formal grant review or Mutual NDA.
 
-Founder, AtoaDEX
-Email: founder.atoadex@proton.me
-Live Website: https://atoadex-founder.github.io/atoadex-web/
-Sui Move Code: https://github.com/atoadex-founder/atoadex-core
-X Profile: https://x.com/AtoaDEX_Sui
-
+**Founder, AtoaDEX**
+- **Email:** founder.atoadex@proton.me
+- **Live Website:** https://github.io
+- **Sui Move Code:** https://github.com
+- **X Profile:** https://x.com/AtoaDEX_Sui
+  
