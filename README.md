@@ -24,7 +24,7 @@ Our complete AtoaDEX v1.9.8 Canonical Whitepaper is available immediately upon f
 
 **Founder, AtoaDEX**
 - **Email:** founder.atoadex@proton.me
-- **Live Website:** https://github.io
-- **Sui Move Code:** https://github.com
+- **Live Website:** https://atoadex-founder.github.io/atoadex-web/
+- **Sui Move Code:** https://github.com/atoadex-founder/atoadex-core
 - **X Profile:** https://x.com/AtoaDEX_Sui
   
