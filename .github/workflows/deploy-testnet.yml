@@ -1,0 +1,23 @@
+name: Test & Deploy AtoaDEX to Sui Testnet
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Sui CLI
+        uses: MystenLabs/sui-action@main
+        with:
+          network: testnet
+      - name: Run Security Exploit Tests
+        run: sui move test
+      - name: Publish to Sui Testnet
+        env:
+          SUI_KEY: ${{ secrets.SUI_TESTNET_KEY }}
+        run: |
+          sui keytool import "$SUI_KEY" ed25519
+          sui client faucet || true
+          sleep 5
+          sui client publish --gas-budget 100000000 --skip-dependency-verification
+          
